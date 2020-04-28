@@ -16,7 +16,7 @@ const redactor = new SyncRedactor({
     ],
   },
 });
-const langDetect = require("cld");
+// const langDetect = require("cld");
 const utilsSchemas = require("../schemas/utilsSchemas");
 
 require("isomorphic-fetch");
@@ -156,19 +156,19 @@ module.exports = function (fastify, opts, next) {
     }
   );
 
-  fastify.get(
-    "/lang-detect",
-    utilsSchemas.languageDetectSchema,
-    async function (request, reply) {
-      langDetect.detect(request.query.text, function (err, result) {
-        if (err) {
-          reply.send(err);
-        } else {
-          reply.send(result.languages);
-        }
-      });
-    }
-  );
+  // fastify.get(
+  //   "/lang-detect",
+  //   utilsSchemas.languageDetectSchema,
+  //   async function (request, reply) {
+  //     langDetect.detect(request.query.text, function (err, result) {
+  //       if (err) {
+  //         reply.send(err);
+  //       } else {
+  //         reply.send(result.languages);
+  //       }
+  //     });
+  //   }
+  // );
 
   fastify.get(
     "/url/shorten",
